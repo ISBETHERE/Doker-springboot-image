@@ -10,12 +10,23 @@ services:
       - "8090:8090"
     depends_on:
       - db
-
+# 네트워크추가하면 양방가능?
+    networks:
+      - app-network
   db:
     image: postgres:latest
+#    설정추가
+    container_name: demo-db-1
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: postgres
     ports:
       - "5432:5432"
+#  networks설정
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
