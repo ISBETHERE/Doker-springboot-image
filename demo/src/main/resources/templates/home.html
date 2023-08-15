@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>My Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container" style="max-width: 500px">
+    <div class="py-5 text-center">
+        <h2>글 목록</h2>
+    </div>
+
+    <hr class="my-4">
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>제목</th>
+                <th>내용</th>
+                <th>상세보기/수정/삭제</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- 반복문을 사용하여 각각의 board 데이터를 테이블에 추가합니다. -->
+            <tr th:each="board : ${boards}">
+                <td th:text="${board.id}"></td>
+                <td th:text="${board.title}"></td>
+                <td th:text="${board.contents}"></td>
+                <td>
+                    <!-- 상세보기, 수정, 삭제 기능 링크 -->
+                    <a th:href="@{/board/{id}(id=${board.id})}">상세보기</a> |
+                    <a th:href="@{/board/edit/{id}(id=${board.id})}">수정</a> |
+                    <form method="post" th:action="@{/board/delete/{id}(id=${board.id})}" style="display:inline;">
+                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">삭제</button>
+                    </form>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="/write">글쓰기</a>
+</div>
+
+</body>
+</html>

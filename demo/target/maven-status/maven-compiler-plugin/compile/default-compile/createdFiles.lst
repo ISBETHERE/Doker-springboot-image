@@ -1,0 +1,7 @@
+com\example\demo\mapper\BoardMapper.class
+com\example\demo\service\BoardService.class
+com\example\demo\DemoApplication.class
+com\example\demo\HomeController.class
+com\example\demo\aspect\ExceptionHandlerAspect.class
+com\example\demo\repository\BoardRepository.class
+com\example\demo\domain\Board.class
